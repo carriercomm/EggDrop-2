@@ -1,13 +1,18 @@
 #!/bin/bash
-
-cd /home/eDrop/win0na/scripts/git/omega-services/
+# used to keep tabs on commits to github via eggdrop bot. Just create a simple tcl script to exec
+# this script and echo the results to chan or where ever you feel like
+# make sure you perform a git clone https://github.com/someone/something.git then set your gitpath etc correctly
+# ev0x - v1.0 17/10/2013
+gitpath="/opt/git/omega-services/"
+scriptpath="/opt/eDrop/scripts/git"
+cd $gitpath
 pull=`git pull > /dev/null 2>&1`
 commit=`git rev-parse --verify HEAD`
 #echo $commit
-last_commit=`cat /home/eDrop/win0na/scripts/git/com.txt`
+last_commit=`cat $scriptpath/com.txt`
 #echo $last_commit
 if [ "$commit" != "$last_commit" ]; then
-        echo "$commit" > /home/eDrop/win0na/scripts/git/com.txt
+        echo "$commit" > $scriptpath/com.txt
         url="https://github.com/omegaservices/omega-services/commit/$commit"
 
         content=`wget -qO- "$url"`
