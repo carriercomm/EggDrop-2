@@ -77,7 +77,7 @@ foreach my $user ( @users ) {
 			if ( "$bypass" == 1 ) {
 				print "[\x0311GitHub\x03] \x02$title :: $comment\x02\n";
 			} else {
-				print "[\x0311GitHub\x03] \x02$where\x02 \x0314by\x03 \x02$author\x02 :: [\x0304$branch\x03] \x02$rev\x02 :: \x02$comment\x02 :: \x0304$gitio\x03";
+				print "[\x0311GitHub\x03] \x02$where\x02 \x0314by\x03 \x02$author\x02 :: [\x0304$branch\x03] \x02$rev\x02 :: \x02$comment\x02 \n$gitio";
 			}
 		}
 		close (GITLOG);
