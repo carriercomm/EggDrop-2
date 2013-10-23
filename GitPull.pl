@@ -11,9 +11,7 @@ my $site_head = "https://github.com/";
 @users = ("Squire.atom","ev0x.atom","jawr.atom","omegaservices.atom");
 
 foreach my $user ( @users ) {
-	#create teh url
 	$url = "$site_head$user";
-
 
 	my $feed = XML::Feed->parse(URI->new($url)) or die XML::Feed->errstr;
 	foreach ($feed->entries) {
