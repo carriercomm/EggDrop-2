@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-
+use utf8;
+binmode STDOUT, ":utf8";
 #use strict;
 #use warnings;
 use XML::Feed;
