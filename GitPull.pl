@@ -23,7 +23,6 @@ foreach my $user ( @users ) {
 		($found) = 0;
 		open(GITLOG, 'git.txt');
 		if (grep{/$id/i} <GITLOG>) {
-#			print "found skipping..\n";
 			($found) = 1;
 		} else {
 			($raw_html) = $_->content->body, "\n";
