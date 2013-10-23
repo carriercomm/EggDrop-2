@@ -66,8 +66,8 @@ foreach my $user ( @users ) {
 				($bypass) = 1;
 			}
 			$commiturl = "https://github.com$committail";
-			$gitio_raw = `curl -s -i http://git.io -F "url=$commiturl" | grep Location | awk -F ":" '{print $2}'`;
-			$gitio = $gitio_raw =~ s/\s*$//;
+			$gitio = `curl -s -i http://git.io -F "url=$commiturl" | grep Location | awk -F ":" '{print $2}'`;
+			chomp($gitio);
 			if (grep{/NEW REPO/i} $title) {
 				($where) = $title;
 			} elsif (grep{/NEW BRANCH/i} $title) {
