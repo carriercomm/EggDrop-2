@@ -51,9 +51,18 @@ foreach my $user ( @users ) {
 			if (grep{/master/i} $title) {
 				($rep) = "Master";
 			}
+			if (grep{/created repository/i} $title) {
+                                ($repname) = $title =~ /created repository (.*?)$/m;
+                                ($title) = "NEW REPO: $repname";
+                        }
+
 			$commiturl = "https://github.com$committail";
 			$gitio = `curl -s -i http://git.io -F "url=$commiturl" | grep Location | awk -F ":" '{print $2}'`;
-			($where) = $title =~ /\/(.*?)$/m;
+                        if (grep{/NEW REPO/i} $title) {
+                                ($where) = $title
+                        } else {
+                                ($where) = $title =~ /\/(.*?)$/m;
+                        }
 			print "[GitHub] $where by $author :: [$rep] $rev :: $comment :: $gitio\n";
 		}
 		close (GITLOG);
