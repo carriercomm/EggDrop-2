@@ -1,4 +1,8 @@
 #!/usr/bin/perl
+#GitPull.pl by ev0x
+# use a tcl script to echo onto channels you want
+
+#dont change from utf8 and the STDOUT binmode. Else you wont be able to parse where the comment contains something like \n
 use utf8;
 binmode STDOUT, ":utf8";
 #use strict;
