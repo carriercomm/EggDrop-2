@@ -67,6 +67,8 @@ foreach my $user ( @users ) {
 				($bypass) = 1;
 			} elsif (grep{/opened pull request/i} $title) {
 				($bypass) = 1;
+			} elsif (grep{/deleted branch/i} $title) {
+				($bypass) = 1;
 			}
 			$commiturl = "https://github.com$committail";
 			$gitio = `curl -s -i http://git.io -F "url=$commiturl" | grep Location | awk -F ":" '{print $2}'`;
